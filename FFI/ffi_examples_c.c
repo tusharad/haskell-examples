@@ -36,17 +36,31 @@ char* intToString(int x){
   return num;
 }
 
+int* addThreeArrays(int* arr1,int n1,int* arr2,int n2,int* arr3,int n3){
+  int num = n1+n2+n3;
+  int* arr = malloc(num*sizeof(int*));
+  int k =0;
+  for(int i = 0;i < n1;i++){
+    arr[k++] = arr1[i];
+  }
+  for(int i = 0;i < n2;i++){
+    arr[k++] = arr2[i];
+  }
+  for(int i = 0;i < n3;i++){
+    arr[k++] = arr3[i];
+  }
+  return arr;
+}
 
 int* addTwoArrays(int* arr1,int n1,int* arr2,int n2){
   int num = n1+n2;
   int* arr = malloc(num*sizeof(int*));
   int k =0;
-  
-  for(int i = 0;i < n2;i++){
-    arr[k++] = arr2[i];
-  }
   for(int i = 0;i < n1;i++){
     arr[k++] = arr1[i];
+  }
+  for(int i = 0;i < n2;i++){
+    arr[k++] = arr2[i];
   }
   return arr;
 }
