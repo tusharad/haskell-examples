@@ -2,6 +2,29 @@
 #include<string.h>
 #include<stdio.h>
 
+typedef struct Student{
+  int roll;
+  int age;
+}Student;
+
+typedef struct Person{
+  int roll;
+  char ch;
+  int num;
+}Person;
+
+void viewPerson(Person* p){
+  if(!p)
+    return;
+  printf("Person: %d %c %d\n",p->roll,p->ch,p->num);
+}
+
+void viewStudent(Student* st){
+  if(!st)
+    return;
+  printf("%d %d\n",st->roll,st->age);
+}
+
 void swap_nums(int* x,int* y){
     int temp = *x;
     *x = *y;

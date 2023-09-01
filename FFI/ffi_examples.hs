@@ -9,6 +9,8 @@ import Foreign.ForeignPtr
 import Foreign.C.String
 import Foreign.Marshal.Array
 import System.IO.Unsafe
+import Control.Applicative ((<$>), (<*>))
+import Foreign.Storable
 
 foreign import ccall "math.h abs" c_abs :: CInt -> CInt
 foreign import ccall "math.h pow" c_pow :: CDouble -> CDouble -> CDouble
@@ -20,8 +22,57 @@ foreign import capi "printf" c_printInt :: CString -> CInt -> IO()
 foreign import ccall "intToString" c_intToString :: CInt -> CString
 foreign import ccall "bubbleSort" c_bubbleSort :: Ptr CInt -> CInt -> IO()
 foreign import ccall "toUpper" c_toUpper :: CString -> IO()
-foreign import ccall "addTwoArrays" c_addTwoArrays:: Ptr CInt -> CInt -> Ptr CInt -> Int -> IO (Ptr CInt)
-foreign import ccall "addThreeArrays" c_addThreeArrays:: Ptr CInt -> CInt -> Ptr CInt -> Int -> Ptr CInt -> Int -> IO (Ptr CInt)
+foreign import ccall "addTwoArrays" c_addTwoArrays :: Ptr CInt -> CInt -> Ptr CInt -> Int -> IO (Ptr CInt)
+foreign import ccall "addThreeArrays" c_addThreeArrays :: Ptr CInt -> CInt -> Ptr CInt -> Int -> Ptr CInt -> Int -> IO (Ptr CInt)
+foreign import ccall "viewStudent" c_viewStudent :: Ptr Student -> IO()
+foreign import ccall "viewPerson" c_viewPerson :: Ptr Person -> IO()
+
+data Student = Student {
+  roll :: Int32,
+  age :: Int32
+}
+
+data Person = Person {
+  roll2 :: Int32,
+  ch :: Char,
+  num :: Int32
+}
+
+instance Storable Student where
+  alignment _ = 4
+  sizeOf _ = 8
+  peek ptr = Student
+    <$> peekByteOff ptr 0
+    <*> peekByteOff ptr 4
+  poke ptr (Student r a) = do
+    pokeByteOff ptr 0 r
+    pokeByteOff ptr 4 a
+
+instance Storable Person where
+  alignment _ = 4
+  sizeOf _ = 12
+  peek ptr = Person
+    <$> peekByteOff ptr 0
+    <*> peekByteOff ptr 4
+    <*> peekByteOff ptr 8
+  poke ptr (Person r c n) = do
+    pokeByteOff ptr 0 r
+    pokeByteOff ptr 4 c
+    pokeByteOff ptr 8 n
+
+viewStudent :: Int -> Int -> IO ()
+viewStudent x y = do
+  let st = Student (fromIntegral x) (fromIntegral y)
+  alloca $ \ptr -> do
+    poke ptr st
+    c_viewStudent ptr
+
+viewPerson :: Int -> Char -> Int -> IO ()
+viewPerson x y z = do
+  let pt = Person (fromIntegral x) y (fromIntegral z)
+  alloca $ \ptr -> do
+    poke ptr pt
+    c_viewPerson ptr
 
 swapTwoNums :: Int -> Int -> (Int,Int)
 swapTwoNums x y = unsafePerformIO $ do
@@ -104,8 +155,11 @@ main = do
     print $ intToString 2
     -- pass int*
     bubbleSort ([4,6,3,7,1] :: [Int32])
-    -- toUpper
+    -- toUpper / pass String
     toUpper "tushar"
     -- merge array
     print $ addTwoArrays [1,2,3] [4,5,6]
     print $ addThreeArrays [1,2,3] [4,5,6] [7,8,9]
+    -- structure
+    viewStudent 2 3
+    viewPerson 2 'a' 3
