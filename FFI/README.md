@@ -1,6 +1,8 @@
-[https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/ffi.html]
-[https://en.wikibooks.org/wiki/Haskell/FFI]
-[https://wiki.haskell.org/Foreign_Function_Interface]
+[resource1](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/ffi.html)
+
+[resource2](https://en.wikibooks.org/wiki/Haskell/FFI)
+
+[resource3](https://wiki.haskell.org/Foreign_Function_Interface)
 
 Haskell FFI (Foreign Function Interface) helps calling c functions from haskell and vice versa. You just need to write function signature with appropriate data types (haskell equivalent data types of c).
 

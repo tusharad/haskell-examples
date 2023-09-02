@@ -26,6 +26,7 @@ foreign import ccall "addTwoArrays" c_addTwoArrays :: Ptr CInt -> CInt -> Ptr CI
 foreign import ccall "addThreeArrays" c_addThreeArrays :: Ptr CInt -> CInt -> Ptr CInt -> Int -> Ptr CInt -> Int -> IO (Ptr CInt)
 foreign import ccall "viewStudent" c_viewStudent :: Ptr Student -> IO()
 foreign import ccall "viewPerson" c_viewPerson :: Ptr Person -> IO()
+foreign import ccall "getStudent" c_getStudent :: CInt -> CInt -> IO(Ptr Student)
 
 data Student = Student {
   roll :: Int32,
@@ -47,6 +48,9 @@ instance Storable Student where
   poke ptr (Student r a) = do
     pokeByteOff ptr 0 r
     pokeByteOff ptr 4 a
+instance Show Student where
+    show st = "Roll number: " ++ show (roll st) ++ " Age: " ++ show (age st)
+
 
 instance Storable Person where
   alignment _ = 4
@@ -66,6 +70,13 @@ viewStudent x y = do
   alloca $ \ptr -> do
     poke ptr st
     c_viewStudent ptr
+
+getStudent :: Int -> Int -> IO ()
+getStudent r a = do
+  let stPtr = unsafePerformIO $ c_getStudent (fromIntegral r) (fromIntegral a)
+  foreignPtr <- newForeignPtr p_free stPtr
+  st <- withForeignPtr foreignPtr $ \ptr -> peek ptr
+  print st
 
 viewPerson :: Int -> Char -> Int -> IO ()
 viewPerson x y z = do
@@ -163,3 +174,5 @@ main = do
     -- structure
     viewStudent 2 3
     viewPerson 2 'a' 3
+    getStudent 2 3
+    

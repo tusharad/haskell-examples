@@ -25,6 +25,13 @@ void viewStudent(Student* st){
   printf("%d %d\n",st->roll,st->age);
 }
 
+Student* getStudent(int roll,int age){
+  Student* st = malloc(sizeof(struct Student*));
+  st->roll = roll;
+  st->age = age;
+  return st;
+}
+
 void swap_nums(int* x,int* y){
     int temp = *x;
     *x = *y;
