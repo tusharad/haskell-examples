@@ -7,13 +7,13 @@ I will also try to write theory in each section's `README`.
 
 ## Contents
  - Foreign Functions Interface
+ - Recursion
 
 ## Upcoming Material
 - Types
 - Typeclasses
 - Pattern Matching
 - Lists
-- Recursion
 - Maybe & Either
 - Maps
 - Functors

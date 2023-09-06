@@ -1,4 +1,4 @@
-module BinarySearch where
+module Main where
 import Data.Int
 
 binarySearch_ :: [Int32] -> Int32 -> Int -> Int -> Maybe Int
@@ -12,3 +12,10 @@ binarySearch_ list1 elem low high
 
 binarySearch :: [Int32] -> Int32 -> Maybe Int
 binarySearch list1 elem = binarySearch_ list1 elem 0 (length list1)
+
+main :: IO ()
+main = do
+    putStrLn "hello"
+    let list1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    let elem = 7
+    print $ binarySearch list1 elem 
