@@ -44,6 +44,8 @@ main = do
   print $ head [1,2,3]        -- get the first element of the list
   print $ tail [1,2,3]        -- get the list without the first element
   print $ last [1,2,3]        -- get the last element of the list [link](https://stackoverflow.com/questions/7376937/fastest-way-to-get-the-last-element-of-a-list-in-haskell)
+  print $ minimum [1,2,3]     -- Get the minimum element of the list
+  print $ maximum [1,2,3]     -- Get the maximum element of the list
   print $ 5 : [1,2,3]         -- create a new list, in which 5 is added in the front of the list
   print $ [5] ++ [1,2,3]      -- concate two lists
   print $ [1,2,3] ++ [5]      -- concate two lists
