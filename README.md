@@ -4,6 +4,7 @@ Haskell is statically typed, purely functional programming language. Despite bei
 
 I will also try to write theory in each section's `README`.
 
+I will also be solving hackerrank problems using Haskell.
 
 ## Contents
  - Foreign Functions Interface

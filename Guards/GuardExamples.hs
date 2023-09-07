@@ -20,6 +20,20 @@ isLeapYear2 year
   | year `mod` 4 == 0 = "Yes"
   | otherwise = "No"
  
+-- Case expression
+printDigit :: Int -> IO ()
+printDigit n = case n of
+  1 -> putStrLn "One"
+  2 -> putStrLn "Two"
+  3 -> putStrLn "Three"
+  4 -> putStrLn "Four"
+  5 -> putStrLn "Five"
+  6 -> putStrLn "Six"
+  7 -> putStrLn "Seven"
+  8 -> putStrLn "Eight"
+  9 -> putStrLn "Nine"
+
+
 main :: IO ()
 main = do
   -- Using if else
@@ -30,3 +44,4 @@ main = do
   putStrLn $ isLeapYear 2004
   -- Nested if else
   putStrLn $ isLeapYear2 2023
+  printDigit 2
