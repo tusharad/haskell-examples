@@ -65,3 +65,4 @@ main = do
   print $ [(x,y) | x <-  [1,2,3], y <- [4,5,6]] -- Generate all possible combinations of tuple from 2 lists
   print $ [x | x <-  [1..10], even x] -- Get a list that contains even numbers between 1 to 10
   print $ [(x,y) | x <-  [1..5], y <- [1..5],(x+y) == 4] -- Generate list of tuples where the sum of both numbers is 4
+  print $ product [1..5]  -- Haskell program to find the factorial of number using product
