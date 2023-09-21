@@ -1,0 +1,64 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           Kattis-Web-Scrapper
+version:        0.1.0.0
+description:    Creates .hs files for the Kattis problems
+homepage:       -
+bug-reports:    -
+author:         Tushar Adhatrao
+maintainer:     tusharadhatrao@gmail.com
+copyright:      2023 Tushar
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/Kattis-Web-Scrapper
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_Kattis_Web_Scrapper
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+	  ,scalpel
+  default-language: Haskell2010
+
+executable Kattis-Web-Scrapper-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_Kattis_Web_Scrapper
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Kattis-Web-Scrapper
+    , base >=4.7 && <5
+	  ,scalpel
+  default-language: Haskell2010
+
+test-suite Kattis-Web-Scrapper-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_Kattis_Web_Scrapper
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Kattis-Web-Scrapper
+    , base >=4.7 && <5
+	  ,scalpel
+  default-language: Haskell2010
