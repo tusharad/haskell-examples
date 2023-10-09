@@ -1,3 +1,5 @@
+-- Implementation of linux's CP command
+-- How to use:- compile using ghc HaskellCP.hs then do ./HaskellCP sample.txt copy-sample.txt
 import System.IO
 import System.Environment
 
