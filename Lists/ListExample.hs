@@ -66,3 +66,4 @@ main = do
   print $ [x | x <-  [1..10], even x] -- Get a list that contains even numbers between 1 to 10
   print $ [(x,y) | x <-  [1..5], y <- [1..5],(x+y) == 4] -- Generate list of tuples where the sum of both numbers is 4
   print $ product [1..5]  -- Haskell program to find the factorial of number using product
+  print $ [[x,y,z] | x <- ["coffe","tea"],y <- ["eggs","pancake","waffles"],z <- ["sausage","ham","bacon"]] -- list of possible combinations of breaksfast you can have
