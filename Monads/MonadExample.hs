@@ -1,5 +1,6 @@
 module Main where
 import qualified Data.Map as Map
+import Control.Monad (join)
 
 type Username = String
 type GamerId = Int
@@ -45,3 +46,6 @@ main = do
     echo
     readInt >>= print
     askForName
+    -- Writing bind operator (>>=) in terms of fmap and join
+    print $ (Just 2) >>= (\x -> (Just (x+1)))       -- Just 3
+    print $ join $ (\x -> Just (x+1)) <$> (Just 2)  -- Just 3
