@@ -9,6 +9,7 @@ I will also be solving hackerrank problems using Haskell.
 ## Contents
  - Foreign Functions Interface
  - Recursion
+ - newtype
 
 ## Upcoming Material
 - Types
@@ -21,3 +22,4 @@ I will also be solving hackerrank problems using Haskell.
 - Applicatives
 - Monads
 - Testing
+- Unspecific

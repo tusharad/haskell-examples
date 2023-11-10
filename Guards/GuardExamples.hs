@@ -20,6 +20,13 @@ isLeapYear2 year
   | year `mod` 4 == 0 = "Yes"
   | otherwise = "No"
  
+isThere :: (Eq a) => [a] -> a -> Maybe Int
+isThere [] _ = Nothing
+isThere xs val = isThere_ xs val 0
+    where
+        isThere_ [] _ _ = Nothing
+        isThere_ (x:xs) val n = if x == val then Just n else isThere_ xs val (n+1)
+
 -- Case expression
 printDigit :: Int -> IO ()
 printDigit n = case n of
