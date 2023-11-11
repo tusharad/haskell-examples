@@ -2,6 +2,13 @@
 
 Applicative is the typeclass which provides us function such as <*> (prononuced as `ap`). This function is similar to `fmap`. <*> takes two arguments, first a function inside some strcutre, second a value inside the same strucutre. <*> penetrates both structure for function and value and apply the function on the value and returns the result inside the structure.
 
+```
+Functor gives us a way to transform any values embedded in
+structure. Applicative gives us a way to transform any val-
+ues contained within a structure using a function that is also
+embedded in structure.
+```
+
 Every instance of Applicative must be an instance of `functor` first. 
 
 In a lot of scenerios, `ap` is used to chain number of arguments for `fmap`.

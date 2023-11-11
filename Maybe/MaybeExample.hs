@@ -1,3 +1,5 @@
+import Data.Maybe (fromMaybe,catMaybes)
+
 data Optional a = Only a | Empty
 
 instance Functor Optional where
@@ -19,3 +21,8 @@ main = do
  case getVal2 of
   Only val -> print val
   Empty -> print("Something went wrong!")
+ -- Alternatively, instead of using case expression to pattern match Maybe result
+ -- We can use fromMaybe from Data.Maybe
+ print $ fromMaybe "" (Just "tushar")
+ print $ fromMaybe "" Nothing
+ print $ catMaybes [Just 2,Just 3]
